@@ -1,0 +1,28 @@
+Polymorphism
+Poly means many
+morphism means different forms or behaviour
+types of polymorphism
+Compile Time Polymorphism
+    (EARLY BINDING , Overloading  )
+    Behaviour is defined as compile timme
+    what we know
+    we have two methods add(int , int )
+    methods add(int , int , int )
+    same name  different parameters
+    which methods will be executed will be decided at compile time
+
+Runtime Polymorphism
+    (LATE BINDING , Overriding )
+    Behaviour is defined at Runtime
+    what will be decided at runtime
+    Lets say we have two classes class A and class B .
+    class B extends class A
+
+class A {
+  public void add(int , int );
+}
+class B extends class A {
+    public void add(int , int);
+}
+In this we don't know which methods will be executed and this will be decided at runtime
+same name same parameters
