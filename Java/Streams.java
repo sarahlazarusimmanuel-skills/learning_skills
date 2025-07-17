@@ -1,10 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Streams {
-    public static void main(String[] args) {
+    public static  void main(String[] args) {
         //List<Integer> nums= new ArrayList<>();
         //nums.add(4);
         //nums.add()
@@ -57,10 +59,51 @@ public class Streams {
 
         //foreach method will give you one value at a time
         //nums.forEach(n-> System.out.println(n));  //But how this works ?  -> Above aprt for onsumer
+//        Predicate<Integer> p = new Predicate<Integer>() {
+//
+//            public boolean test(Integer t) {
+////                 if(t%2==0)
+////                     return true;
+////                 else
+////                     return false;
+//                return t%2==0;
+//            }
+//        };
+
+        //How map works
+        //teo parameters one for accepting another for returning
+//   Function<Integer,Integer> f = new Function<Integer, Integer>() {
+//
+//       public Integer apply(Integer n) {
+//           return n*2;
+//       }
+//   }  ;
+    //Reduce
+        //Every time you will add two values 
        int result = nums.stream()
                .filter(n->n%2==0)
-               .map(n->n*2)
+               //.map(n->n*2)
+               //.map(f)
                .reduce(0,(c,e)->c+e);
         System.out.println(result);
+
+
+        //Lets first talk about filter here ,It needs a
+        // Predicate an interface  (boolean valued function  )
+        // functional method test method
+
+        Stream<Integer> sortedValues = nums.stream()
+                .filter(n->n%2==0)
+                .sorted();
+        //System.out.println(sortedValues);
+        sortedValues.forEach(n-> System.out.println(n));
+
+        //parallelStream
+        Stream<Integer> sortedValuesOne = nums.parallelStream()
+                .filter(n->n%2==0)   ;
+        //to make your work easier through threads
+        sortedValuesOne.forEach(n-> System.out.println(n));
+
+
     }
 }
