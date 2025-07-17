@@ -10,14 +10,16 @@ public class Streams {
         //nums.add()
         //Instead of doing nums.add you can use Arrays.asList();
         List<Integer> nums = Arrays.asList(4, 5, 6, 1, 2);
-        Stream<Integer> s1 =nums.stream();   //if you make any changes to s1 nums
-        // will not get affected
-        //s1.forEach(n-> System.out.println(n));
-        //s1.forEach(n-> System.out.println(n));     // stream has already been operated upon or closed
-        Stream<Integer> s2 =s1.filter(n->n%2==0);
-        //s2.forEach(n-> System.out.println(n));
-        Stream<Integer> s3 = s2.map(n->n*2);
-        s3.forEach(n-> System.out.println(n));
+//        Stream<Integer> s1 =nums.stream();   //if you make any changes to s1 nums
+//        // will not get affected
+//        //s1.forEach(n-> System.out.println(n));
+//        //s1.forEach(n-> System.out.println(n));     // stream has already been operated upon or closed
+//        Stream<Integer> s2 =s1.filter(n->n%2==0);
+//        //s2.forEach(n-> System.out.println(n));
+//        Stream<Integer> s3 = s2.map(n->n*2);
+//        int result = s3.reduce(0,(c,e)->c+e);
+//        System.out.println(result);
+        //s3.forEach(n-> System.out.println(n));
         //Only thing about stream is once you use it you cant reuse it  just like the flow of water 
 //        Consumer<Integer> comp = new Consumer<Integer>(){
 //            public void accept(Integer n )
@@ -55,5 +57,10 @@ public class Streams {
 
         //foreach method will give you one value at a time
         //nums.forEach(n-> System.out.println(n));  //But how this works ?  -> Above aprt for onsumer
+       int result = nums.stream()
+               .filter(n->n%2==0)
+               .map(n->n*2)
+               .reduce(0,(c,e)->c+e);
+        System.out.println(result);
     }
 }
